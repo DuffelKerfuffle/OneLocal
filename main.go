@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/smtp"
+	"os"
 
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
@@ -76,7 +77,10 @@ func main() {
 			})
 		}
 	}
-	port := "9000"
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "9000" // Default port if not specified
+	}
 	err := r.Run(":" + port)
 	if err != nil {
 		panic(err)
