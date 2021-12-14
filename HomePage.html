@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <style>
+
+            @font-face { 
+                font-family: PrintClear;   
+                src: url('./images/PRINC___.ttf');
+            } 
+
+            h1 { 
+                font-family: PrintClear; 
+            }
+
+            p {
+                font-family: PrintClear;  
+                font-size: 24px;
+            }
+            .moveButton {
+                height: 38%;
+                background-color: white;
+                border: none;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row" style = "border-bottom:1px solid black;">
+                <div class="col">
+                    <img src="./images/LOGO.png" style="width:200px;height:120px;">
+                </div>
+                <div class="col">
+                    <button class = "moveButton"></button><br>
+                    <a href="https://www.ye-tradingstation.org.uk/" style = "font-family: PrintClear; font-size: 36px; text-decoration:none; color: black">Trading station</a>
+                </div>
+                <div class="col">
+                    <button class = "moveButton"></button><br>
+                    <a href="/contact" style = "font-family: PrintClear; font-size: 36px; text-decoration:none; color: black">Contact us</a>
+                </div>
+                <div class="col">
+                    <button class = "moveButton"></button><br>
+                    <a href="/terms" style = "font-family: PrintClear; font-size: 36px; text-decoration:none; color: black">Terms and conditons</a>
+                </div>
+            </div>
+            <div class="row">
+                <p>Welcome to the OneLocal home page! We are a young enterprise advertising service who aim to uplift the community one business at a time</p>
+                <p style = "font-family: PrintClear;">You can see the businesses we promote down below.</p>
+                {{ range $key, $value := . }}
+                    <p style = "font-family: PrintClear;">{{ $value.Name }}</p>
+                    {{ range $key2, $value2 := $value.BusinessesInArea }}
+                        <form action="/{{ $value2.Name }}">
+                            <input style = "font-family: PrintClear;" type="submit" value = "{{ $value2.Name }}">
+                        </form>
+                    {{ end }}
+                {{ end }} 
+            </div>
+        </div>
+    </body>
+</html>
