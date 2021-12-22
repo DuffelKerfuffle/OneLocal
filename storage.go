@@ -22,15 +22,14 @@ func Load(c string) []business {
 		panic(err)
 	}
 	iter := client.Collection(c).Documents(ctx)
-	for {
-
-		doc, err := iter.Next()
-		if err == iterator.Done {
-			break
-		}
-		if err != nil {
-			panic(err)
-		}
+	for doc, err := iter.Next(); err == nil; doc, err = iter.Next() {
+		// doc, err := iter.Next()
+		// if err == iterator.Done {
+		// 	break
+		// }
+		// if err != nil {
+		// 	panic(err)
+		// }
 		b = business{
 			Name:        doc.Data()["Name"].(string),
 			ContactInfo: doc.Data()["Contactinfo"].(string),

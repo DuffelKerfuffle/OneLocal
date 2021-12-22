@@ -70,14 +70,29 @@ func main() {
 		c.HTML(http.StatusOK, "Contact.html", areas)
 	})
 
-	for _, v := range areas {
-		for _, j := range v.BusinessesInArea {
-			r.GET("/"+j.Name, func(c *gin.Context) {
-				areas = LoadAll()
-				c.HTML(http.StatusOK, "BusinessWeb.html", j)
-			})
+	// for _, v := range areas {
+	// 	for _, j := range v.BusinessesInArea {
+	// 		r.GET("/business/"+j.Name, func(c *gin.Context) {
+	// 			areas = LoadAll()
+	// 			c.HTML(http.StatusOK, "BusinessWeb.html", j)
+	// 		})
+	// 	}
+	// }
+
+	r.GET("/businesses", func(c *gin.Context) {
+		areas = LoadAll()
+
+		place := c.Request.URL.Query().Get("business")
+		for _, v := range areas {
+			for _, u := range v.BusinessesInArea {
+				if place == u.Name {
+					c.HTML(http.StatusOK, "BusinessWeb.html", u)
+					break
+				}
+			}
 		}
-	}
+	})
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "9000" // Default port if not specified

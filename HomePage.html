@@ -50,9 +50,7 @@
                 {{ range $key, $value := . }}
                     <p style = "font-family: PrintClear;">{{ $value.Name }}</p>
                     {{ range $key2, $value2 := $value.BusinessesInArea }}
-                        <form action="/{{ $value2.Name }}">
-                            <input style = "font-family: PrintClear;" type="submit" value = "{{ $value2.Name }}">
-                        </form>
+                        <a href="/businesses?business={{ $value2.Name }}">{{ $value2.Name }}</a>
                     {{ end }}
                 {{ end }} 
             </div>
