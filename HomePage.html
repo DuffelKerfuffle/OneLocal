@@ -45,15 +45,29 @@
                 </div>
             </div>
             <div class="row">
-                <p>Welcome to the OneLocal home page! We are a young enterprise advertising service who aim to uplift the community one business at a time</p>
+                <div class="col-9">
+                    <p>OneLocal is proud to be representing Watford Grammar School for Boys in the Young Enterprise competition. We take pride in belonging to the Watford community and strive to improve it, one business at a time.<br><p>Coming out of the pandemic, we believe that the small businesses that have been disproportionately affected have been hurt and with our business, we want to advertise and promote the products and services of the very businesses that have suffered the most in these unprecedented times.<br></p>
+                </div>
+                <div class="col-3">
+                    <img src="./images/Watford_Grammar_School_For_Boys_Logo.png">
+                </div>
+            </div>
+            <div class="row">
+
+                <p>The world is changing as we speak: digitalisation is transforming the global economy towards a more easily accessible, modern, and innovative version of itself. However, this is leading to many businesses, particularly SMEs, being overwhelmed by larger corporations which have the resources required to develop themselves much more quickly and effectively than local businesses. We want to bridge this gap. OneLocal aims to uplift the local economy, one business at a time.
+                    So, what are you waiting for? If you have a small business in the general Watford / Harrow area that you believe will benefit from OneLocal's cost-efficient and effective business promotion plans, then why not sign up now?
+                </p>
+
                 <p style = "font-family: PrintClear;">You can see the businesses we promote down below.</p>
                 {{ range $key, $value := . }}
                     <p style = "font-family: PrintClear;">{{ $value.Name }}</p>
-                    {{ range $key2, $value2 := $value.BusinessesInArea }}
-                        <a href="/businesses?business={{ $value2.Name }}">{{ $value2.Name }}</a>
+                        {{ range $key2, $value2 := $value.BusinessesInArea }}
+                            <a href="/businesses?business={{ $value2.Name }}">{{ $value2.Name }}</a>
                     {{ end }}
                 {{ end }} 
+
             </div>
+                    
         </div>
     </body>
 </html>

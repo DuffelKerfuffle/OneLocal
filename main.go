@@ -41,9 +41,14 @@ func main() {
 	r.Use(static.Serve("/images", static.LocalFile("./images", true)))
 	r.Use(static.Serve("/.fonts", static.LocalFile("./.fonts", true)))
 	r.LoadHTMLFiles("BusinessWeb.html", "HomePage.html", "Contact.html", "Terms.html")
+
 	r.GET("/home", func(c *gin.Context) {
 		areas = LoadAll()
 		c.HTML(http.StatusOK, "HomePage.html", areas)
+	})
+
+	r.GET("/", func(c *gin.Context) {
+		c.Redirect(http.StatusMovedPermanently, "/home")
 	})
 
 	r.GET("/terms", func(c *gin.Context) {
