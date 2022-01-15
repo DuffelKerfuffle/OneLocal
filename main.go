@@ -25,7 +25,7 @@ type business struct {
 
 func main() {
 	email := "onelocal4@gmail.com"
-	password := "h@llo123"
+	password := "h.llo123"
 	receiver := []string{"onelocal4@gmail.com"}
 
 	smtpHost := "smtp.gmail.com"
