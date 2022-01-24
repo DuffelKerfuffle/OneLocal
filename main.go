@@ -40,7 +40,7 @@ func main() {
 	}
 	r.Use(static.Serve("/images", static.LocalFile("./images", true)))
 	r.Use(static.Serve("/.fonts", static.LocalFile("./.fonts", true)))
-	r.LoadHTMLFiles("BusinessWeb.html", "HomePage.html", "Contact.html", "Terms.html")
+	r.LoadHTMLFiles("BusinessWeb.html", "HomePage.html", "Contact.html", "Terms.html", "businesses.html")
 
 	r.GET("/home", func(c *gin.Context) {
 		areas = LoadAll()
@@ -84,7 +84,7 @@ func main() {
 	// 	}
 	// }
 
-	r.GET("/businesses", func(c *gin.Context) {
+	r.GET("/business", func(c *gin.Context) {
 		areas = LoadAll()
 
 		place := c.Request.URL.Query().Get("business")
@@ -96,6 +96,11 @@ func main() {
 				}
 			}
 		}
+	})
+
+	r.GET("/businesses", func(c *gin.Context) {
+		areas = LoadAll()
+		c.HTML(http.StatusOK, "businesses.html", areas)
 	})
 
 	port := os.Getenv("PORT")

@@ -10,22 +10,13 @@
             } 
 
             h1 { 
-                font-family: PrintClear;  
+                font-family: PrintClear; 
             }
 
             p {
                 font-family: PrintClear;  
                 font-size: 24px;
             }
-
-            .center {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 35%;
-                height: 35%;
-            }
-
             .moveButton {
                 height: 38%;
                 background-color: white;
@@ -36,7 +27,7 @@
     </head>
     <body>
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" style = "border-bottom:1px solid black;">
                 <div class="col">
                     <img src="./images/LOGO.png" style="width:200px;height:120px;">
                 </div>
@@ -53,23 +44,17 @@
                     <a href="/home" style = "font-family: PrintClear; font-size: 36px; text-decoration:none; color: black">Home</a>
                 </div>
             </div>
-            <div class="row" style = "border-top:1px solid black; border-bottom:1px solid black">
-                <h1 style="text-align: center;">{{ .Name }}</h1>
+            <div class="row">
+
+                <p style = "font-family: PrintClear;">You can see the businesses we promote down below.</p>
+                {{ range $key, $value := . }}
+                    <p style = "font-family: PrintClear;">{{ $value.Name }}</p>
+                        {{ range $key2, $value2 := $value.BusinessesInArea }}
+                            <a href="/businesses?business={{ $value2.Name }}">{{ $value2.Name }}</a>
+                    {{ end }}
+                {{ end }} 
+
             </div>
-        </div><br>
-
-        <div class="row" style = "border-top:1px solid black; border-bottom:1px solid black">
-            <h1 style="text-align: center;">Businesses</h1>
         </div>
-
-        <img src = "{{ .ImageLink }} " class = "center">
-        <p>{{ .Description }}</p>
-        <p> Their address is {{ .Address }}</p>
-
-        <p>You can also contact them at {{ .ContactInfo }}</p>
-
-        <form action="/home">
-            <input style = "font-family: PrintClear;" type="submit" value = "Home">
-        </form>
     </body>
 </html>

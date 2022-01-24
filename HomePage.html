@@ -27,7 +27,7 @@
     </head>
     <body>
         <div class="container-fluid">
-            <div class="row" style = "border-bottom:1px solid black;">
+            <div class="row">
                 <div class="col">
                     <img src="./images/LOGO.png" style="width:200px;height:120px;">
                 </div>
@@ -41,8 +41,11 @@
                 </div>
                 <div class="col">
                     <button class = "moveButton"></button><br>
-                    <a href="/terms" style = "font-family: PrintClear; font-size: 36px; text-decoration:none; color: black">Terms and conditons</a>
+                    <a href="/businesses" style = "font-family: PrintClear; font-size: 36px; text-decoration:none; color: black">Businesses</a>
                 </div>
+            </div>
+            <div class="row" style = "border-top:1px solid black; border-bottom:1px solid black">
+                <h1 style="text-align: center;">Home</h1>
             </div>
             <div class="row">
                 <div class="col-9">
@@ -57,17 +60,11 @@
                 <p>The world is changing as we speak: digitalisation is transforming the global economy towards a more easily accessible, modern, and innovative version of itself. However, this is leading to many businesses, particularly SMEs, being overwhelmed by larger corporations which have the resources required to develop themselves much more quickly and effectively than local businesses. We want to bridge this gap. OneLocal aims to uplift the local economy, one business at a time.
                     So, what are you waiting for? If you have a small business in the general Watford / Harrow area that you believe will benefit from OneLocal's cost-efficient and effective business promotion plans, then why not sign up now?
                 </p>
-
-                <p style = "font-family: PrintClear;">You can see the businesses we promote down below.</p>
-                {{ range $key, $value := . }}
-                    <p style = "font-family: PrintClear;">{{ $value.Name }}</p>
-                        {{ range $key2, $value2 := $value.BusinessesInArea }}
-                            <a href="/businesses?business={{ $value2.Name }}">{{ $value2.Name }}</a>
-                    {{ end }}
-                {{ end }} 
-
             </div>
                     
+            <div class="row">
+                <p>You can find our terms of conditions <a href="/terms">here</a></p>
+            </div>
         </div>
     </body>
 </html>
