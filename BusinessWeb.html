@@ -33,8 +33,16 @@
             }
 
         </style>
+        <script>
+            function checkAddress() {
+                if(document.getElementById("address").innerHTML == "Their address is "){
+                    document.getElementById("address").style.display = "none";
+                }
+            }
+        </script>
     </head>
-    <body>
+
+    <body onload = "checkAddress()">
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
@@ -58,18 +66,11 @@
             </div>
         </div><br>
 
-        <div class="row" style = "border-top:1px solid black; border-bottom:1px solid black">
-            <h1 style="text-align: center;">Businesses</h1>
-        </div>
-
         <img src = "{{ .ImageLink }} " class = "center">
         <p>{{ .Description }}</p>
-        <p> Their address is {{ .Address }}</p>
+        <p id = "address">Their address is {{ .Address }}</p>
 
-        <p>You can also contact them at {{ .ContactInfo }}</p>
+        <p>You can contact them at {{ .ContactInfo }}</p>
 
-        <form action="/home">
-            <input style = "font-family: PrintClear;" type="submit" value = "Home">
-        </form>
     </body>
 </html>

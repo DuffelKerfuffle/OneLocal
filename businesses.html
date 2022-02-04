@@ -50,7 +50,7 @@
                 {{ range $key, $value := . }}
                     <p style = "font-family: PrintClear;">{{ $value.Name }}</p>
                         {{ range $key2, $value2 := $value.BusinessesInArea }}
-                            <a href="/businesses?business={{ $value2.Name }}">{{ $value2.Name }}</a>
+                            <a href="/business?business={{ $value2.Name }}">{{ $value2.Name }}</a>
                     {{ end }}
                 {{ end }} 
 
